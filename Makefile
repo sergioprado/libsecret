@@ -1,9 +1,10 @@
 CC?=gcc
 CFLAGS?=-Wall -Werror
+LDFLAGS?=
 
 all:
 	${CC} ${CFLAGS} -fPIC -c libsecret.c
-	${CC} -shared -Wl,-soname,libsecret.so.1 -o libsecret.so.1.0 libsecret.o
+	${CC} ${LDFLAGS} -shared -Wl,-soname,libsecret.so.1 -o libsecret.so.1.0 libsecret.o
 
 install:
 	mkdir -p ${DESTDIR}/usr/lib/
